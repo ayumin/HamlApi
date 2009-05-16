@@ -272,24 +272,36 @@ XHTMLでは、属性名と同じ有効な値を各属性に与える必要があ
 
 >||
   %br
-  %meta{'http-equiv' => 'Content-Type', :content => 'text/html'}is also compiled to: 
+  %meta{'http-equiv' => 'Content-Type', :content => 'text/html'}
 ||<
 
+はどちらも以下のようにコンパイルされます。
+
+>||
   <br />
-  <meta http-equiv='Content-Type' content='text/html' />. and #
+  <meta http-equiv='Content-Type' content='text/html' />
+||<
+
+*** . and #
 The period and pound sign are borrowed from CSS. They are used as shortcuts to specify the class and id attributes of an element, respectively. Multiple class names can be specified in a similar way to CSS, by chaining the class names together with periods. They are placed immediately after the tag and before an attributes hash. For example: 
 
+>||
   %div#things
     %span#rice Chicken Fried
     %p.beans{ :food => 'true' } The magical fruit
-    %h1.class.otherclass#id La La Lais compiled to: 
+    %h1.class.otherclass#id La La La
+||<
 
+is compiled to: 
+
+>||
   <div id='things'>
     <span id='rice'>Chicken Fried</span>
     <p class='beans' food='true'>The magical fruit</p>
     <h1 class='class otherclass' id='id'>La La La</h1>
   </div>And, 
 
+>||
   #content
     .articles
       .article.title
@@ -297,8 +309,13 @@ The period and pound sign are borrowed from CSS. They are used as shortcuts to s
       .article.date
         2006-11-05
       .article.entry
-        Neil Patrick Harris would like to dispel any rumors that he is straightis compiled to: 
+        Neil Patrick Harris would like to dispel any rumors that he is straight
 
+||<
+
+これは以下のようにコンパイルされます。
+
+>||
   <div id='content'>
     <div class='articles'>
       <div class='article title'>Doogie Howser Comes Out</div>
@@ -307,7 +324,9 @@ The period and pound sign are borrowed from CSS. They are used as shortcuts to s
         Neil Patrick Harris would like to dispel any rumors that he is straight
       </div>
     </div>
-  </div>Implicit Div Elements
+  </div>
+||<
+Implicit Div Elements
 Because the div element is used so often, it is the default element. If you only define a class and/or id using the . or # syntax, a div element is automatically used. For example: 
 
   #collection
@@ -322,36 +341,71 @@ Because the div element is used so often, it is the default element. If you only
     <div class='item'>
       <div class='description'>What a cool item!</div>
     </div>
-  </div>> and <
+  </div>
+
+*** > and <
 > and < give you more control over the whitespace near a tag. > will remove all whitespace surrounding a tag, while < will remove all whitespace immediately within a tag. You can think of them as alligators eating the whitespace: > faces out of the tag and eats the whitespace on the outside, and < faces into the tag and eats the whitespace on the inside. They‘re placed at the end of a tag definition, after class, id, and attribute declarations but before / or =. For example: 
 
+>||
   %blockquote<
     %div
-      Foo!is compiled to: 
+      Foo!
+||<
 
+これは以下のようにコンパイルされます。
+
+>||
   <blockquote><div>
     Foo!
-  </div></blockquote>And: 
+  </div></blockquote>
+||<
 
+そして
+
+>||
   %img
   %img>
-  %imgis compiled to: 
+  %img
+>||
 
-  <img /><img /><img />And: 
+これは以下のようにコンパイルされます。
 
- %p<= "Foo\nBar"is compiled to: 
+>||
+  <img /><img /><img />
+||<
 
+そして
+
+>||
+ %p<= "Foo\nBar"
+||<
+
+これは以下のようにコンパイルされます。
+
+>||
  <p>Foo
- Bar</p>And finally: 
+ Bar</p>
+||<
 
+そして最後に
+
+>||
   %img
   %pre><
     foo
     bar
-  %imgis compiled to: 
+  %img
+||<
 
+これは以下のようにコンパイルされます。
+
+>||
   <img /><pre>foo
-  bar</pre><img />=
+  bar</pre><img />
+
+||<
+
+*** =
 = is placed at the end of a tag definition, after class, id, and attribute declarations. It‘s just a shortcut for inserting Ruby code into an element. It works the same as = without a tag: it inserts the result of the Ruby code into the template. However, if the result is short enough, it is displayed entirely on one line. For example: 
 
   %p= "hello"is not quite the same as: 

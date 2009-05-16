@@ -1,5 +1,5 @@
 *1241166958*[Ruby]Hamlリファレンス
-なんとなく気が向いたので途中まで訳してみた。
+なんとなく気が向いたので途中まで訳してみた。 
 だいたい20%くらいまで。続きはまた今度やる。
 (原文はこちら)→http://haml.hamptoncatlin.com/docs/rdoc/classes/Haml.html
 

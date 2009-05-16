@@ -414,36 +414,65 @@ and is compiled to:
 ||<
 
 *** =
- = is placed at the end of a tag definition, after class, id, and attribute declarations. It‘s just a shortcut for inserting Ruby code into an element. It works the same as = without a tag: it inserts the result of the Ruby code into the template. However, if the result is short enough, it is displayed entirely on one line. For example: 
+ = はタグ定義の一番最後、クラス、ID、属性の宣言の後に記述されます。これは要素にRubyコードを挿入するショートカットです。It works the same as = without a tag: it inserts the result of the Ruby code into the template. しかし、結果が十分に短くない場合は、それは完全に一行で表示されます。例えば：
 
-  %p= "hello"is not quite the same as: 
+>||
+  %p= "hello"
+||<
 
+上記の例はつぎのように記述するのと同じです。 
+
+>||
   %p
-    = "hello"It‘s compiled to: 
+    = "hello"
+||<
 
-  <p>hello</p>~
-~ works just like =, except that it runs Haml::Helpers#find_and_preserve on its input. For example, 
+これは以下のようにコンパイルされます。 
 
-  ~ "Foo\n<pre>Bar\nBaz</pre>"is the same as: 
+>||
+  <p>hello</p>
+||<
 
-  = find_and_preserve("Foo\n<pre>Bar\nBaz</pre>")and is compiled to: 
+*** ~
+　~ は =のように機能します。, except that it runs Haml::Helpers#find_and_preserve on its input.例えば： 
 
+>||
+  ~ "Foo\n<pre>Bar\nBaz</pre>"
+||<
+
+上記の例はつぎのように記述するのと同じです。 
+ 
+>||
+  = find_and_preserve("Foo\n<pre>Bar\nBaz</pre>")
+||<
+
+そしてこれは以下のようにコンパイルされます。 
+
+>||
   Foo
-  <pre>Bar&#x000A;Baz</pre>See also Whitespace Preservation, below. 
+  <pre>Bar&#x000A;Baz</pre>
+||<
 
-XHTML Helpers
+下の Whitespace Preservationも参照してください。 
+
+*** XHTML Helpers
 No Special Character
 If no special character appears at the beginning of a line, the line is rendered as plain text. For example: 
 
   %gee
     %whiz
-      Wow this is cool!is compiled to: 
+      Wow this is cool!
+
+is compiled to: 
 
   <gee>
     <whiz>
       Wow this is cool!
     </whiz>
-  </gee>!!!
+  </gee>
+
+*** !!!
+
 When describing XHTML documents with Haml, you can have a document type or XML prolog generated automatically by including the characters !!!. For example: 
 
   !!! XML

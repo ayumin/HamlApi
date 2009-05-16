@@ -283,7 +283,8 @@ XHTMLでは、属性名と同じ有効な値を各属性に与える必要があ
 ||<
 
 *** . and #
-ピリオドと＃はCSSからの借り物です。これらは要素のクラスとIDを指定するためのショートカットとして用いられます。The period and pound sign are borrowed from CSS. They are used as shortcuts to specify the class and id attributes of an element, respectively. Multiple class names can be specified in a similar way to CSS, by chaining the class names together with periods. They are placed immediately after the tag and before an attributes hash. For example: 
+ピリオドと＃はCSSからの借り物です。これらは要素のクラスとIDを指定するためのショートカットとして用いられます。 複CSSと似た方法でピリオドや＃をチェインすることで、複数のクラス名を指定することが可能です。
+これらはタグの直後、属性ハッシュの直前に記述します。例えば：
 
 >||
   %div#things
@@ -292,7 +293,7 @@ XHTMLでは、属性名と同じ有効な値を各属性に与える必要があ
     %h1.class.otherclass#id La La La
 ||<
 
-is compiled to: 
+は以下のようにコンパイルされます。
 
 >||
   <div id='things'>
@@ -327,22 +328,28 @@ is compiled to:
   </div>
 ||<
 
-Implicit Div Elements
+*** Implicit Div 要素
 Because the div element is used so often, it is the default element. If you only define a class and/or id using the . or # syntax, a div element is automatically used. For example: 
 
+>||
   #collection
     .item
       .description What a cool item!is the same as: 
 
   %div{:id => collection}
     %div{:class => 'item'}
-      %div{:class => 'description'} What a cool item!and is compiled to: 
+      %div{:class => 'description'} What a cool item!
+||<
 
+and is compiled to: 
+
+>||
   <div id='collection'>
     <div class='item'>
       <div class='description'>What a cool item!</div>
     </div>
   </div>
+||<
 
 *** > and <
 > and < give you more control over the whitespace near a tag. > will remove all whitespace surrounding a tag, while < will remove all whitespace immediately within a tag. You can think of them as alligators eating the whitespace: > faces out of the tag and eats the whitespace on the outside, and < faces into the tag and eats the whitespace on the inside. They‘re placed at the end of a tag definition, after class, id, and attribute declarations but before / or =. For example: 
@@ -407,7 +414,7 @@ Because the div element is used so often, it is the default element. If you only
 ||<
 
 *** =
-= is placed at the end of a tag definition, after class, id, and attribute declarations. It‘s just a shortcut for inserting Ruby code into an element. It works the same as = without a tag: it inserts the result of the Ruby code into the template. However, if the result is short enough, it is displayed entirely on one line. For example: 
+ = is placed at the end of a tag definition, after class, id, and attribute declarations. It‘s just a shortcut for inserting Ruby code into an element. It works the same as = without a tag: it inserts the result of the Ruby code into the template. However, if the result is short enough, it is displayed entirely on one line. For example: 
 
   %p= "hello"is not quite the same as: 
 

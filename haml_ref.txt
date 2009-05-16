@@ -283,7 +283,7 @@ XHTMLでは、属性名と同じ有効な値を各属性に与える必要があ
 ||<
 
 *** . and #
-The period and pound sign are borrowed from CSS. They are used as shortcuts to specify the class and id attributes of an element, respectively. Multiple class names can be specified in a similar way to CSS, by chaining the class names together with periods. They are placed immediately after the tag and before an attributes hash. For example: 
+ピリオドと＃はCSSからの借り物です。これらは要素のクラスとIDを指定するためのショートカットとして用いられます。The period and pound sign are borrowed from CSS. They are used as shortcuts to specify the class and id attributes of an element, respectively. Multiple class names can be specified in a similar way to CSS, by chaining the class names together with periods. They are placed immediately after the tag and before an attributes hash. For example: 
 
 >||
   %div#things
@@ -326,6 +326,7 @@ is compiled to:
     </div>
   </div>
 ||<
+
 Implicit Div Elements
 Because the div element is used so often, it is the default element. If you only define a class and/or id using the . or # syntax, a div element is automatically used. For example: 
 
